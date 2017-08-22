@@ -28,10 +28,16 @@ def main(X_data, y_data, test_size):
 
 	# predicao do classificador
 	y_pred = gnb.predict(X_test)
+
+	print 'score:', gnb.score(X_test, y_test)
+
 	return confusion_matrix(y_test, y_pred)
 
 
 if __name__ == "__main__":
 	sizes = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 	X_data, y_data = load_svmlight_file('./data')
-	print [{x: main(X_data, y_data, x)} for x in sizes]
+	for x in sizes:
+		print 'test size:', x
+		print main(X_data, y_data, x)
+		print '-----------------------------------------'
