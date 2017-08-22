@@ -18,11 +18,9 @@ def main(X_data, y_data, test_size):
 	# cria uma DT
 	clf  = tree.DecisionTreeClassifier()
 
-	print 'Fitting DT'
 	clf.fit(X_train, y_train)
 
 	# predicao do classificador
-	print 'Predicting...'
 	y_pred = clf.predict(X_test)
 
 	# cria a matriz de confusao
@@ -30,6 +28,5 @@ def main(X_data, y_data, test_size):
 
 if __name__ == "__main__":
 	sizes = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-	print "Loading data..."
 	X_data, y_data = load_svmlight_file('./data')
 	print [{x: main(X_data, y_data, x)} for x in sizes]

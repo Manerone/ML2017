@@ -37,6 +37,6 @@ if __name__ == "__main__":
 	X_data, y_data = load_svmlight_file('./data')
 	for x in sizes:
 		values = []
-		for _ in xrange(0,10):
+		for _ in xrange(0,5):
 			values.append(main(X_data, y_data, x))
 		print x, sum(values)/float(len(values))
