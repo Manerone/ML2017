@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- encoding: iso-8859-1 -*-
 
-import os
 from sklearn import cross_validation
 from sklearn.datasets import load_svmlight_file
 from sklearn.naive_bayes import BernoulliNB
@@ -36,5 +35,5 @@ def main(X_data, y_data, test_size):
 
 
 if __name__ == "__main__":
-    X_data, y_data = load_svmlight_file(os.getcwd() + '/./data')
+    X_data, y_data = load_svmlight_file('./data')
     main(X_data, y_data, 0.5)

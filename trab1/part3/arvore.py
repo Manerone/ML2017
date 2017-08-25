@@ -1,10 +1,8 @@
 #!/usr/bin/python
 # -*- encoding: iso-8859-1 -*-
 
-import os
 from sklearn import cross_validation
 from sklearn.datasets import load_svmlight_file
-from sklearn.metrics import confusion_matrix
 from sklearn import tree
 
 
@@ -21,7 +19,7 @@ def main(X_data, y_data, test_size):
 
     label_pred = clf.predict(X_test)
 
-    ### Probabilities
+    # Probabilities
     probs = clf.predict_proba(X_test)
 
     correct_hist = []
@@ -36,5 +34,5 @@ def main(X_data, y_data, test_size):
 
 
 if __name__ == "__main__":
-    X_data, y_data = load_svmlight_file(os.getcwd() + '/./data')
+    X_data, y_data = load_svmlight_file('./data')
     main(X_data, y_data, 0.5)

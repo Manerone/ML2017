@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- encoding: iso-8859-1 -*-
 
-import os
 from sklearn import cross_validation
 from sklearn.datasets import load_svmlight_file
 from sklearn.metrics import confusion_matrix
@@ -29,7 +28,7 @@ def main(X_data, y_data, test_size):
 
 if __name__ == "__main__":
     sizes = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-    X_data, y_data = load_svmlight_file(os.getcwd() + '/./data')
+    X_data, y_data = load_svmlight_file('./data')
     for x in sizes:
         print 'test size:', x
         print main(X_data, y_data, x)
