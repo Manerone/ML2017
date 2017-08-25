@@ -3,8 +3,10 @@
 
 from sklearn import cross_validation
 from sklearn.datasets import load_svmlight_file
-from sklearn.metrics import confusion_matrix
 from sklearn.naive_bayes import BernoulliNB
+import matplotlib.pyplot as plt
+import scikitplot.plotters as skplt
+import os
 
 
 def main(X_data, y_data, test_size):
@@ -22,15 +24,15 @@ def main(X_data, y_data, test_size):
     # predicao do classificador
     y_pred = gnb.predict(X_test)
 
-    print 'score:', gnb.score(X_test, y_test)
-
-    return confusion_matrix(y_test, y_pred)
+    return y_test, y_pred
 
 
 if __name__ == "__main__":
     sizes = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
     X_data, y_data = load_svmlight_file('./data')
+    if not os.path.exists('./nb/'):
+        os.makedirs('./nb/')
     for x in sizes:
-        print 'test size:', x
-        print main(X_data, y_data, x)
-        print '-----------------------------------------'
+        y_test, y_pred = main(X_data, y_data, x)
+        skplt.plot_confusion_matrix(y_test, y_pred, normalize=True)
+        plt.savefig('./nb/' + str(int(x*10)) + '.png', bbox_inches='tight')
