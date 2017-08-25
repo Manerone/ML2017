@@ -4,6 +4,8 @@
 from sklearn import cross_validation
 from sklearn.datasets import load_svmlight_file
 from sklearn import tree
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 def main(X_data, y_data, test_size):
@@ -25,8 +27,16 @@ def main(X_data, y_data, test_size):
 if __name__ == "__main__":
     sizes = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
     X_data, y_data = load_svmlight_file('./data')
+    accuracies = []
     for x in sizes:
-        values = []
-        for _ in xrange(0, 5):
-            values.append(main(X_data, y_data, x))
-        print x, sum(values)/float(len(values))
+        accuracies.append(main(X_data, y_data, x))
+
+    y_pos = np.arange(len(sizes))
+    plt.ylim(0, 1)
+    plt.bar(y_pos, accuracies, align='center', alpha=0.5)
+    plt.xticks(y_pos, sizes)
+    plt.xlabel('Test size')
+    plt.ylabel('Accuracy')
+    plt.title('Accuracy over test size')
+
+    plt.savefig('arvore_result.png', bbox_inches='tight')
