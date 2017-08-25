@@ -31,7 +31,7 @@ if __name__ == "__main__":
         accuracies.append(main(X_data, y_data, x))
 
     y_pos = np.arange(len(sizes))
-    plt.ylim(0, 1)
+    plt.ylim(0.85, 1)
     plt.bar(y_pos, accuracies, align='center', alpha=0.5)
     plt.xticks(y_pos, sizes)
     plt.xlabel('Test size')
