@@ -37,5 +37,6 @@ if __name__ == "__main__":
     plt.xlabel('Test size')
     plt.ylabel('Accuracy')
     plt.title('Accuracy over test size')
+    plt.grid(True)
 
     plt.savefig('nb_result.png', bbox_inches='tight')
