@@ -34,9 +34,9 @@ if __name__ == "__main__":
     plt.ylim(0.85, 1)
     plt.bar(y_pos, accuracies, align='center', alpha=0.5)
     plt.xticks(y_pos, sizes)
-    plt.xlabel('Test size')
-    plt.ylabel('Accuracy')
-    plt.title('Accuracy over test size')
+    plt.xlabel('Tamanho da base de teste')
+    plt.ylabel('Taxa de acerto')
+    plt.title('')
     plt.grid(True)
 
     plt.savefig('nb_result.png', bbox_inches='tight')
