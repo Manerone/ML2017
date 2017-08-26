@@ -39,20 +39,17 @@ if __name__ == "__main__":
     X_data, y_data = load_svmlight_file('./data')
     correct, error = main(X_data, y_data, 0.5)
 
-    n, bins, patches = plt.hist(correct, 50)
+    n, bins, patches = plt.hist(
+        [correct, error],
+        bins=10,
+        label=['Acertos', 'Erros'],
+        stacked=False, fill=True
+    )
 
-    plt.xlabel('Probability')
-    plt.xlim(0, 1)
-    plt.title('Histogram of probability over correct predictions')
+    plt.xlabel('Probabilidades')
+    plt.xlim(0, 1.1)
+    plt.title('Histograma de probabilidades')
     plt.grid(True)
+    plt.legend(prop={'size': 10}, loc='upper center')
 
-    plt.savefig('arvore_correct_hist.png', bbox_inches='tight')
-
-    n, bins, patches = plt.hist(error, 50)
-
-    plt.xlabel('Probability')
-    plt.xlim(0, 1)
-    plt.title('Histogram of probability over wrong predictions')
-    plt.grid(True)
-
-    plt.savefig('arvore_error_hist.png', bbox_inches='tight')
+    plt.savefig('arvore_hist.png', bbox_inches='tight')

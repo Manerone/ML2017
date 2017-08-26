@@ -36,24 +36,31 @@ def main(X_data, y_data, test_size):
     return correct_hist, error_hist
 
 
+def separete_in_bins(array):
+    splits = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    # bins = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    hist = []
+    for value in array:
+        for i in xrange(0, len(splits)):
+            if value <= splits[i]:
+                hist.append(splits[i])
+    return hist
+
+
 if __name__ == "__main__":
     X_data, y_data = load_svmlight_file('./data')
     correct, error = main(X_data, y_data, 0.5)
 
-    n, bins, patches = plt.hist(correct, 50)
+    n, bins, patches = plt.hist(
+        [correct, error],
+        bins=10,
+        label=['Acertos', 'Erros'],
+        stacked=False, fill=True
+    )
 
-    plt.xlabel('Probability')
-    plt.xlim(0, 1)
-    plt.title('Histogram of probability over correct predictions')
+    plt.xlabel('Probabilidades')
+    plt.title('Histograma de probabilidades')
     plt.grid(True)
+    plt.legend(prop={'size': 10}, loc='upper center')
 
-    plt.savefig('nb_correct_hist.png', bbox_inches='tight')
-
-    n, bins, patches = plt.hist(error, 50)
-
-    plt.xlabel('Probability')
-    plt.xlim(0, 1)
-    plt.title('Histogram of probability over wrong predictions')
-    plt.grid(True)
-
-    plt.savefig('nb_error_hist.png', bbox_inches='tight')
+    plt.savefig('nb_hist.png', bbox_inches='tight')
