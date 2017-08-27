@@ -36,6 +36,7 @@ if __name__ == "__main__":
             y_test,
             y_pred,
             normalize=True,
-            title='Normalized Confusion Matrix (test size: ' + str(x) + ')'
+            title='Normalized Confusion Matrix (test size: ' + str(x) + ')',
+            text_fontsize="large"
         )
         plt.savefig('./arvore/' + str(int(x*10)) + '.png', bbox_inches='tight')
