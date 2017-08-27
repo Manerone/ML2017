@@ -34,5 +34,10 @@ if __name__ == "__main__":
         os.makedirs('./nb/')
     for x in sizes:
         y_test, y_pred = main(X_data, y_data, x)
-        skplt.plot_confusion_matrix(y_test, y_pred, normalize=True)
+        skplt.plot_confusion_matrix(
+            y_test,
+            y_pred,
+            normalize=True,
+            title='Normalized Confusion Matrix (test size: ' + str(x) + ')'
+        )
         plt.savefig('./nb/' + str(int(x*10)) + '.png', bbox_inches='tight')
