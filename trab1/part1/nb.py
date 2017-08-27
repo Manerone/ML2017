@@ -10,7 +10,7 @@ import numpy as np
 
 def main(X_data, y_data, test_size):
     X_train, X_test, y_train, y_test = cross_validation.train_test_split(
-        X_data, y_data, test_size=test_size
+        X_data, y_data, test_size=(1-test_size)
     )
 
     X_train = X_train.toarray()
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     plt.ylim(0.85, 1)
     plt.bar(y_pos, accuracies, align='center', alpha=0.5)
     plt.xticks(y_pos, sizes)
-    plt.xlabel('Tamanho da base de teste')
+    plt.xlabel('Tamanho da base de treinamento')
     plt.ylabel('Taxa de acerto')
     plt.title('')
     plt.grid(True)
