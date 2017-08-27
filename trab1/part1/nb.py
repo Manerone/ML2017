@@ -36,7 +36,7 @@ if __name__ == "__main__":
     plt.xticks(y_pos, sizes)
     plt.xlabel('Tamanho da base de treinamento')
     plt.ylabel('Taxa de acerto')
-    plt.title('')
+    plt.title('Naive Bayes')
     plt.grid(True)
 
     plt.savefig('nb_result.png', bbox_inches='tight')

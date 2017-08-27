@@ -37,7 +37,7 @@ if __name__ == "__main__":
     plt.xticks(y_pos, sizes)
     plt.xlabel('Tamanho da base de treinamento')
     plt.ylabel('Taxa de acerto')
-    plt.title('')
+    plt.title('Arvore de decisao')
     plt.grid(True)
 
     plt.savefig('arvore_result.png', bbox_inches='tight')
