@@ -14,5 +14,5 @@ def svc_param_selection(train_features, train_labels):
 
 
 if __name__ == '__main__':
-    train_features, train_labels = load_svmlight_file('./train.vet')
+    train_features, train_labels = load_svmlight_file('./treino.vet')
     print svc_param_selection(train_features, train_labels)
