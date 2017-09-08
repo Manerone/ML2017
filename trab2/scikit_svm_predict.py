@@ -11,3 +11,6 @@ if __name__ == '__main__':
     classificator = SVC(C=c, gamma=gamma)
     classificator.fit(train_attrs, train_labels)
     print 'Prediction score:', classificator.score(test_attrs, test_labels)
+    predicts = classificator.predict(test_attrs)
+    for predict in predicts:
+        print predict
