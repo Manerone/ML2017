@@ -7,7 +7,7 @@ def construct_dict(array):
     return {float(key): value for (key, value) in positions}
 
 
-def build_hist(file_path, save_path, real_labels):
+def build_hist(file_path, title, save_path, real_labels):
     with open(file_path) as f:
         label_location = construct_dict(f.readline().strip().split(' '))
         lines = f.readlines()
@@ -34,7 +34,7 @@ def build_hist(file_path, save_path, real_labels):
 
     plt.xlabel('Probabilidades')
     plt.xlim(0, 1.1)
-    plt.title('Histograma de probabilidades')
+    plt.title(title)
     plt.grid(True)
     plt.legend(prop={'size': 10}, loc='upper center')
 
@@ -45,11 +45,13 @@ if __name__ == '__main__':
     _, real_labels = load_svmlight_file('./teste.vet')
 
     file_path = './libsvm_prob_output'
+    title = 'Histograma de probabilidades (LibSVM)'
     save_path = 'prob_dist/libsvm.png'
 
-    build_hist(file_path, save_path, real_labels)
+    build_hist(file_path, title, save_path, real_labels)
 
     file_path = './scikit_svm_prob_output'
+    title = 'Histograma de probabilidades (Scikit)'
     save_path = 'prob_dist/scikit.png'
 
-    build_hist(file_path, save_path, real_labels)
+    build_hist(file_path, title, save_path, real_labels)
