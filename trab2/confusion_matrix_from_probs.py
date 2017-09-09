@@ -15,9 +15,13 @@ import scikitplot.plotters as skplt
 if __name__ == '__main__':
     _, real_labels = load_svmlight_file('./teste.vet')
 
-    file_path = './scikit_svm_prob_output'
-    title = 'Scikit Confusion Matrix Using Probability'
-    save_path = 'confusion_matrixes/scikit_prob.png'
+    file_path = './libsvm_prob_output'
+    title = 'LibSVM Confusion Matrix Using Probability'
+    save_path = 'confusion_matrixes/libsvm_prob.png'
+
+    # file_path = './scikit_svm_prob_output'
+    # title = 'Scikit Confusion Matrix Using Probability'
+    # save_path = 'confusion_matrixes/scikit_prob.png'
 
     with open(file_path) as f:
         lines = f.readlines()
