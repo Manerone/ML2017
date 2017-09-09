@@ -59,7 +59,7 @@ if __name__ == "__main__":
     )
 
     plt.xlabel('Probabilidades')
-    plt.title('Histograma de probabilidades')
+    plt.title('Histograma de probabilidades (Naive Bayes)')
     plt.grid(True)
     plt.legend(prop={'size': 10}, loc='upper center')
 

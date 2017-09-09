@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
     plt.xlabel('Probabilidades')
     plt.xlim(0, 1.1)
-    plt.title('Histograma de probabilidades')
+    plt.title('Histograma de probabilidades (Decision Tree)')
     plt.grid(True)
     plt.legend(prop={'size': 10}, loc='upper center')
 
