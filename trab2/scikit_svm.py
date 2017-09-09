@@ -1,18 +1,26 @@
-from sklearn import svm
-from sklearn.model_selection import GridSearchCV
+from sklearn.svm import SVC
 from sklearn.datasets import load_svmlight_file
-
-
-def svc_param_selection(train_features, train_labels):
-    Cs = [2**x for x in xrange(-5, 17, 2)]
-    gammas = [2**x for x in xrange(-15, 5, 2)]
-    param_grid = {'C': Cs, 'gamma': gammas}
-    gs = GridSearchCV(svm.SVC(kernel='rbf'), param_grid, n_jobs=4)
-    gs.fit(train_features, train_labels)
-    gs.best_params_
-    return gs.best_params_
+from numpy import argmax
 
 
 if __name__ == '__main__':
-    train_features, train_labels = load_svmlight_file('./treino.vet')
-    print svc_param_selection(train_features, train_labels)
+    c = 8.0
+    gamma = 2.0
+    train_attrs, train_labels = load_svmlight_file('./treino.vet')
+    test_attrs, test_labels = load_svmlight_file('./teste.vet')
+
+    classificator = SVC(C=c, gamma=gamma, probability=True)
+    classificator.fit(train_attrs, train_labels)
+    probs = classificator.predict_proba(test_attrs)
+
+    print 'Prediction score:', classificator.score(test_attrs, test_labels)
+    predicts = classificator.predict(test_attrs)
+    for predict in predicts:
+        print predict
+
+    print '@@@@@'
+
+    for prob in probs:
+        label = argmax(prob)
+        string = ' '.join([str(x) for x in prob])
+        print(str(label) + ' ' + string)
